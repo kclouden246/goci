@@ -24,7 +24,7 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-                arugments:
+                arguments:
                 - -c
                 - packer build docker.json
                 command: powershell
