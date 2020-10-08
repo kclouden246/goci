@@ -10,7 +10,7 @@ pipelines:
         git: https://github.com/kclouden246/goci.git
         shallow_clone: false
         auto_update: true
-        branch: master
+        branch: main
     stages:
     - StageTest:
         fetch_materials: true
@@ -24,5 +24,8 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-                command: Task1
+                arugments:
+                - -c
+                - packer build
+                command: /bin/bash
                 run_if: passed
