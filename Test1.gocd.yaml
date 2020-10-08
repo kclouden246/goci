@@ -25,6 +25,7 @@ pipelines:
             tasks:
             - exec:
                 arugments:
+                - -c
                 - packer build docker.json
                 command: powershell
                 run_if: passed
