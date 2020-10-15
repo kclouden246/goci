@@ -37,7 +37,7 @@
           "name": "w",
           "environment_variables": [],
           "tabs": [],
-          "resources": [],
+          "resources": ["packer"],
           "artifacts": [],
           "timeout": 0.0,
           "tasks": [
