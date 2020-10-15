@@ -1,30 +1,58 @@
-format_version: 10
-pipelines:
-  Test1:
-    group: My-Pipelines
-    label_template: ${COUNT}
-    lock_behavior: none
-    display_order: -1
-    materials:
-      git-6dee0f9:
-        git: https://github.com/kclouden246/goci.git
-        shallow_clone: false
-        auto_update: true
-        branch: main
-    stages:
-    - StageTest:
-        fetch_materials: true
-        keep_artifacts: false
-        clean_workspace: false
-        approval:
-          type: success
-          allow_only_on_success: false
-        jobs:
-          JobTest:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - packer build docker.json
-                command: /bin/bash
-                run_if: passed
+{
+  "group": "defaultGroup",
+  "name": "a",
+  "display_order_weight": -1.0,
+  "label_template": "${COUNT}",
+  "lock_behavior": "none",
+  "environment_variables": [],
+  "parameters": [],
+  "materials": [
+    {
+      "url": "https://github.com/kclouden246/goci.git",
+      "branch": "main",
+      "shallow_clone": false,
+      "filter": {
+        "ignore": [],
+        "includes": []
+      },
+      "auto_update": true,
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "b",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "success",
+        "users": [],
+        "roles": [],
+        "allow_only_on_success": false
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "c",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "timeout": 0.0,
+          "tasks": [
+            {
+              "command": "/bin/bash",
+              "timeout": -1.0,
+              "arguments": [
+                "packer build docker.json"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
