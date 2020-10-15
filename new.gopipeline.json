@@ -42,10 +42,9 @@
           "timeout": 0.0,
           "tasks": [
             {
-              "command": "/bin/bash",
+              "command": "packer",
               "timeout": -1.0,
               "arguments": [
-                "packer",
                 "build",
                 "docker.json"
               ],
